@@ -1,10 +1,14 @@
-import { useParams } from 'react-router-dom'
+import { useHistory, useParams } from 'react-router-dom'
 
 import logoImg from '../assets/images/logo.svg'
+import deleteImg from '../assets/images/delete.svg'
+
 import { Button } from '../components/Button'
 import { Question } from '../components/Question'
 import { RoomCode } from '../components/RoomCode'
 import { useRoom } from '../hooks/useRoom'
+import { ref, remove, update } from 'firebase/database'
+import { database } from '../services/firebase'
 
 import '../styles/room.scss'
 
@@ -13,10 +17,27 @@ type RoomParams = {
 }
 
 export function AdminRoom() {
+  const history = useHistory();
   const params = useParams<RoomParams>()
   const roomId = params.id
 
   const { questions, title } = useRoom(roomId)
+
+  async function handleEndRoom() {
+    const questionRef = ref(database, `rooms/${roomId}`)
+      await update(questionRef, {
+        endedAt: new Date(),
+      })
+
+      history.push('/')
+  }
+
+  async function handleDeleteQuestion(questionId: string) {
+    if (window.confirm('Tem certeza que deseja excluir essa pergunta?')) {
+      const questionRef = ref(database, `rooms/${roomId}/questions/${questionId}`)
+      await remove(questionRef)
+    }
+  } 
 
   return (
     <div id="page-room">
@@ -25,7 +46,7 @@ export function AdminRoom() {
           <img src={logoImg} alt="Letmeask logo" />
           <div>
             <RoomCode code={roomId} />
-            <Button isOutlined>Encerrar sala</Button>
+            <Button isOutlined onClick={handleEndRoom}>Encerrar sala</Button>
           </div>
         </div>
       </header>
@@ -41,7 +62,15 @@ export function AdminRoom() {
               key={question.id}
               content={question.content} 
               author={question.author} 
-            />
+            >
+              <button
+                type="button"
+                onClick={() => handleDeleteQuestion(question.id)}
+              >
+                <img src={deleteImg} alt="Remover pergunta" />
+              </button>
+            </Question>
+            
           ))}
         </div>
       </main>

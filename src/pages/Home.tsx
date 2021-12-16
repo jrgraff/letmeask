@@ -34,7 +34,12 @@ export function Home() {
     const firebaseRoom = await get(roomRef)
 
     if (!firebaseRoom.exists()) {
-      alert('Room does no exists!')
+      alert('Sala inexistente')
+      return
+    }
+
+    if (firebaseRoom.val().endedAt) {
+      alert('Sala fechada')
       return
     }
 
