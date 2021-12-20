@@ -10,7 +10,7 @@
 <p align="center">
   <img alt="Rocketseat" src="https://img.shields.io/badge/Created%20by%3A-Rocketseat-%236D5CCD" />
   <img alt="jrgraff" src="https://img.shields.io/badge/Developed%20by%3A-jrgraff-%23DD3B3F" />
-  <img alt="Typescript" src="https://img.shields.io/badge/Main%20lenguage-Typescript-%232F74C0" /> <br />
+  <img alt="Typescript" src="https://img.shields.io/badge/Language%3A-Typescript-%232F74C0" /> <br />
 </p> 
 <br />
 <br />
