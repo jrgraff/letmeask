@@ -4,7 +4,7 @@ const Input = styled.input`
   --size: 2rem;
   
   position: fixed;
-  top: 16px;
+  top: 30px;
   right: 16px;
 
   appearance: none;
@@ -15,7 +15,6 @@ const Input = styled.input`
   height: var(--size);
   box-shadow: inset calc(var(--size) * 0.33) calc(var(--size) * -0.25) 0;
   border-radius: 999px;
-  color: hsl(10, 0%, 20%);
   
   transition: all 500ms;
   
@@ -25,7 +24,6 @@ const Input = styled.input`
     --offset-diagonal: calc(var(--size) * 0.45);
 
     transform: scale(0.75);
-    color: hsl(40, 100%, 50%);
     box-shadow: 
       inset 0 0 0 var(--size),
       calc(var(--offset-orthogonal) * -1) 0 0 var(--ray-size),

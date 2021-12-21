@@ -3,19 +3,19 @@ import { FormEvent, useState } from 'react';
 import { ref, get } from '@firebase/database';
 
 import { database } from '../services/firebase';
-import { useAuth } from '../hooks/useAuth';
 
+import logoImg from '../assets/images/logo.svg';
 import illustrationImg from '../assets/images/illustration.svg';
 import googleIconImg from '../assets/images/google-icon.svg';
-import logoImg from '../assets/images/logo.svg';
 
 import { Button } from '../components/Button';
-import '../styles/auth.scss';
+import { useAuth } from '../hooks/useAuth';
+import { Aside, Content, GoogleButton, PageAuth, Separator } from '../styles';
 
 export function Home() {
   const history = useHistory();
-  const { user, signInWithGoogle } = useAuth();
   const [roomCode, setRoomCode] = useState('');
+  const { user, signInWithGoogle } = useAuth();
 
   async function handleCreateRoom() {
     if (!user) {
@@ -23,7 +23,6 @@ export function Home() {
     }
     history.push('/rooms/new')
   }
-
   async function handleJoinRoom(event: FormEvent) {
     event.preventDefault();
 
@@ -48,20 +47,20 @@ export function Home() {
   }
 
   return (
-    <div id="page-auth">
-      <aside>
+    <PageAuth>
+      <Aside>
         <img src={illustrationImg} alt="Ilustração simbolizando perguntas e respostas" />
         <strong>Crie salas de Q&amp;A ao vivo</strong>
         <p>Tire as dúvidas de sua audiência em tempo real</p>
-      </aside>
-      <main>
-        <div className="main-content">
-          <img src={logoImg} alt="Logo da Letmeask" />
-          <button onClick={handleCreateRoom} className="create-room">
+      </Aside>
+      <Content>
+        <div>
+          <img src={logoImg} alt="Letmeask" />
+          <GoogleButton onClick={handleCreateRoom} >
             <img src={googleIconImg} alt="Logo da Google" />
             Crie sua sala com o Google
-          </button>
-          <div className="separator">ou entre em uma sala</div>
+          </GoogleButton>
+          <Separator>ou entre em uma sala</Separator>
           <form onSubmit={handleJoinRoom}>
             <input
               type="text"
@@ -74,7 +73,7 @@ export function Home() {
             </Button>
           </form>
         </div>
-      </main>
-    </div>
+      </Content>
+    </PageAuth>
   )
 }

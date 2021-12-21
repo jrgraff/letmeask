@@ -32,7 +32,7 @@ export default createGlobalStyle`
   }
 
   .dark-mode:root {
-    --background: #121212;
+    --background: #1C1C1C;
 
     --box-background: #1a1330;
 
@@ -42,9 +42,9 @@ export default createGlobalStyle`
 
     --red: #ac273f;
 
-    --gray-dark: #2C2C2C;
-    --gray-medium: #323232;
-    --gray-light: #373737;
+    --gray-dark: #cecece;
+    --gray-medium: #a8a8b3;
+    --gray-light: #737380;
 
     input, h1, h2, h3, h4, h5, h6, b, strong {
       color: #f8f8f8 !important;
