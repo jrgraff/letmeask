@@ -1,4 +1,5 @@
 import { useHistory, useParams } from 'react-router-dom'
+import { ref, remove, update } from 'firebase/database'
 
 import logoImg from '../assets/images/logo.svg'
 import deleteImg from '../assets/images/delete.svg'
@@ -9,7 +10,6 @@ import { Button } from '../components/Button'
 import { Question } from '../components/Question'
 import { RoomCode } from '../components/RoomCode'
 import { useRoom } from '../hooks/useRoom'
-import { ref, remove, update } from 'firebase/database'
 import { database } from '../services/firebase'
 
 import '../styles/room.scss'

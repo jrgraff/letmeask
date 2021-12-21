@@ -27,10 +27,6 @@ um projeto que consiste no ranqueamento de Q&A para facilitar a apresentação d
 
 <br />
 
-[![Letmeask_video](https://github.com/EddyPBR/letmeask/blob/main/.github/assets/letmeask-capa.jpg)](https://youtu.be/a7P--fnjtzE)
-
-<br />
-
 ## :bulb: Conteúdos abordados
 <br />
 
@@ -53,3 +49,20 @@ Para colocar o projeto para rodar, basta seguir o passo a passo fornecido logo a
 - 4º: Copie as variaveis do arquivo `.env.example` e cole no `.env.local`, agora preencha as informações com os dados de seu firebase;
 - 5º: Com tudo finalizado, execute o comando `npm run dev` ou `yarn dev`;
 - 6º: Pronto tudo configurado, faça bom proveito;
+<br />
+
+## :wrench: Melhorias
+<br />
+
+Para o projeto não ser apenas uma cópia do desenvolvido no evento, irei adicionar algumas funcionalidades extras:
+
+* Troca entre tema escuro e claro;
+* Troca de SASS por Styled-Components;
+* Ordenação de perguntas por números de likes;
+<br />
+- Pode ser adicionado futuramente
+* Configuração do ESLint e Prettier
+* Mudança de visual na aplicação (Toast para avisos do sistema);
+* Adicionar regras de segurança;
+* Separação de frontend e backend;
+* Migrar para NextJS e PWA;
