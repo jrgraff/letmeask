@@ -54,8 +54,13 @@ export const Content = styled.main`
     align-items: stretch;
     text-align: center;
 
-    > img {
+    img {
       align-self: center;
+    }
+
+    h2 {
+      margin: 4rem 0 1.5rem;
+      font: 700 1.5rem "Poppins", sans-serif;
     }
   }
 
@@ -72,8 +77,25 @@ export const Content = styled.main`
       margin-top: 1rem;
     }
 
-    > button, input {
+    > button,
+    input {
       width: 100%;
+    }
+  }
+
+  p {
+    font-size: 0.875rem;
+    color: var(--gray-dark);
+    margin-top: 1rem;
+
+    a {
+      margin-left: .225rem;
+      color: var(--pink-dark);
+      transition: filter .2s;
+    }
+
+    a:hover {
+      filter: brightness(0.8);
     }
   }
 `
