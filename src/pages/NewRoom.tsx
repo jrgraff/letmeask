@@ -9,7 +9,7 @@ import illustrationImg from '../assets/images/illustration.svg';
 import logoImg from '../assets/images/logo.svg'
 
 import { Button } from '../components/Button';
-import { Aside, Content, PageAuth } from '../styles';
+import { Aside, HomeContent, PageAuth } from '../styles';
 
 export function NewRoom() {
   const { user } = useAuth();
@@ -40,7 +40,7 @@ export function NewRoom() {
         <strong>Crie salas de Q&amp;A ao vivo</strong>
         <p>Tire as dúvidas de sua audiência em tempo real</p>
       </Aside>
-      <Content>
+      <HomeContent>
         <div>
           <img src={logoImg} alt="Letmeask" />
           <h2>Criar uma nova sala</h2>
@@ -57,7 +57,7 @@ export function NewRoom() {
           </form>
           <p>Deseja entrar em uma sala existente? <Link to="/">Clique aqui</Link></p>
         </div>
-      </Content>
+      </HomeContent>
     </PageAuth>
   )
 }

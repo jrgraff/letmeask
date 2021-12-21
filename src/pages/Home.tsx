@@ -10,7 +10,7 @@ import googleIconImg from '../assets/images/google-icon.svg';
 
 import { Button } from '../components/Button';
 import { useAuth } from '../hooks/useAuth';
-import { Aside, Content, GoogleButton, PageAuth, Separator } from '../styles';
+import { Aside, HomeContent, GoogleButton, PageAuth, Separator } from '../styles';
 
 export function Home() {
   const history = useHistory();
@@ -53,7 +53,7 @@ export function Home() {
         <strong>Crie salas de Q&amp;A ao vivo</strong>
         <p>Tire as dúvidas de sua audiência em tempo real</p>
       </Aside>
-      <Content>
+      <HomeContent>
         <div>
           <img src={logoImg} alt="Letmeask" />
           <GoogleButton onClick={handleCreateRoom} >
@@ -73,7 +73,7 @@ export function Home() {
             </Button>
           </form>
         </div>
-      </Content>
+      </HomeContent>
     </PageAuth>
   )
 }

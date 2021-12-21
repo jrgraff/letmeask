@@ -54,14 +54,14 @@ Para colocar o projeto para rodar, basta seguir o passo a passo fornecido logo a
 ## :wrench: Melhorias
 <br />
 
-Para o projeto não ser apenas uma cópia do desenvolvido no evento, irei adicionar algumas funcionalidades extras:
+Para o projeto não ser apenas uma cópia do desenvolvido no evento, foram adicionadas algumas funcionalidades extras:
 
 * Troca entre tema escuro e claro;
 * Troca de SASS por Styled-Components;
-* Ordenação de perguntas por números de likes;
 <br />
 - Pode ser adicionado futuramente
 * Configuração do ESLint e Prettier
+* Ordenação de perguntas por números de likes;
 * Mudança de visual na aplicação (Toast para avisos do sistema);
 * Adicionar regras de segurança;
 * Separação de frontend e backend;

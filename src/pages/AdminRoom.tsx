@@ -1,6 +1,9 @@
 import { useHistory, useParams } from 'react-router-dom'
 import { ref, remove, update } from 'firebase/database'
 
+import { useRoom } from '../hooks/useRoom'
+import { database } from '../services/firebase'
+
 import logoImg from '../assets/images/logo.svg'
 import deleteImg from '../assets/images/delete.svg'
 import checkImg from '../assets/images/check.svg'
@@ -9,10 +12,7 @@ import answerImg from '../assets/images/answer.svg'
 import { Button } from '../components/Button'
 import { Question } from '../components/Question'
 import { RoomCode } from '../components/RoomCode'
-import { useRoom } from '../hooks/useRoom'
-import { database } from '../services/firebase'
-
-import '../styles/room.scss'
+import { CheckButton, Header, HighlightButton, QuestionsList, RoomContent } from '../styles'
 
 type RoomParams = {
   id: string;
@@ -57,23 +57,23 @@ export function AdminRoom() {
   }
 
   return (
-    <div id="page-room">
-      <header>
-        <div className="content">
-          <img src={logoImg} alt="Letmeask logo" />
+    <>
+      <Header>
+        <div>
+          <img src={logoImg} alt="Letmeask" />
           <div>
             <RoomCode code={roomId} />
             <Button isOutlined onClick={handleEndRoom}>Encerrar sala</Button>
           </div>
         </div>
-      </header>
+      </Header>
 
-      <main>
-        <div className="room-title">
+      <RoomContent>
+        <div>
           <h1>Sala {title}</h1>
           {questions.length > 0 && <span>{questions.length} pergunta(s)</span>}
         </div>
-        <div className="question-list">
+        <QuestionsList>
           {questions.map(question => (
             <Question
               key={question.id}
@@ -84,18 +84,18 @@ export function AdminRoom() {
             >
               {!question.isAnswered && (
                 <>
-                  <button
+                  <CheckButton
                     type="button"
                     onClick={() => handleCheckQuestion(question.id)}
                   >
                     <img src={checkImg} alt="Marcar pergunta como respondida" />
-                  </button>
-                  <button
+                  </CheckButton>
+                  <HighlightButton
                     type="button"
                     onClick={() => handleHighlightQuestion(question.id)}
                   >
                     <img src={answerImg} alt="Destacar pergunta" />
-                  </button>
+                  </HighlightButton>
                 </>
               )}
               <button
@@ -107,8 +107,8 @@ export function AdminRoom() {
             </Question>
 
           ))}
-        </div>
-      </main>
-    </div>
+        </QuestionsList>
+      </RoomContent>
+    </>
   )
 }

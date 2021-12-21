@@ -11,7 +11,7 @@ import { useAuth } from '../hooks/useAuth'
 import { useRoom } from '../hooks/useRoom'
 import { database } from '../services/firebase'
 
-import '../styles/room.scss'
+import { Form, Header, LikeButton, QuestionsList, RoomContent, UserInfo } from '../styles'
 
 type RoomParams = {
   id: string;
@@ -68,38 +68,43 @@ export function Room() {
   }
 
   return (
-    <div id="page-room">
-      <header>
-        <div className="content">
-          <img src={logoImg} alt="Letmeask logo" />
+    <>
+      <Header>
+        <div>
+          <img src={logoImg} alt="Letmeask" />
           <RoomCode code={roomId} />
         </div>
-      </header>
+      </Header>
 
-      <main>
-        <div className="room-title">
+      <RoomContent>
+        <div>
           <h1>Sala {title}</h1>
-          {questions.length > 0 && <span>{questions.length} pergunta(s)</span>}
+          {questions.length > 0 && (
+            <span>
+              {questions.length}{" "}
+              {questions.length > 1 ? "perguntas" : "pergunta"}
+            </span>
+          )}
         </div>
-        <form onSubmit={handleSendQuestion}>
+        <Form onSubmit={handleSendQuestion}>
           <textarea
             placeholder="O que você deseja perguntar?"
             onChange={event => setNewQuestion(event.target.value)}
             value={newQuestion}
           />
-          <div className="form-footer">
+          <div>
             {user ? (
-              <div className="user-info">
+              <UserInfo>
                 <img src={user.avatar} alt={user.name} />
                 <span>{user.name}</span>
-              </div>
+              </UserInfo>
             ) : (
               <span>Para enviar uma pergunta, <button>faça seu login</button>.</span>
             )}
             <Button type="submit" disabled={!user}>Enviar pergunta</Button>
           </div>
-        </form>
-        <div className="question-list">
+        </Form>
+        <QuestionsList>
           {questions.map(question => (
             <Question
               key={question.id}
@@ -109,8 +114,8 @@ export function Room() {
               isHighlighted={question.isHighlighted}
             >
               {!question.isAnswered && (
-                <button
-                  className={`like-button ${question.likeId ? 'liked' : ''}`}
+                <LikeButton
+                  className={question.likeId ? 'liked' : ''}
                   type="button"
                   aria-label="Marcar como gostei"
                   onClick={() => handleLikeQuestion(question.id, question.likeId)}
@@ -125,12 +130,12 @@ export function Room() {
                       strokeLinejoin="round"
                     />
                   </svg>
-                </button>
+                </LikeButton>
               )}
             </Question>
           ))}
-        </div>
-      </main>
-    </div>
+        </QuestionsList>
+      </RoomContent>
+    </>
   )
 }
